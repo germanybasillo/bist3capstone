@@ -7,6 +7,7 @@ use App\Http\Controllers\TenantController;
 use App\Http\Controllers\RoomController;
 use App\Http\Controllers\BedController;
 use App\Http\Controllers\BedAssignController;
+use App\Http\Controllers\NoticeController;
 
 
 
@@ -98,6 +99,8 @@ Route::get('notices', function () {
     return view('page.notices');
 });
 
+Route::get('/notices',  [NoticeController::class, 'message']);
+
 Route::get('suggestion', function () {
     return view('page.suggestion');
 });
@@ -112,9 +115,7 @@ Route::get('collectibles', function () {
 
 
 // tenant dashboard
-Route::get('index', function () {
-    return view('tenant.index');
-});
+
 
 Route::get('notice', function () {
     return view('tenant.notice');
@@ -147,6 +148,7 @@ Route::get('payment-history', function () {
 
 // dashboard
 Route::get('landingpage',  [ProjectController::class, 'admindashboard']);
+Route::get('index',  [ProjectController::class, 'tenantdashboard']);
 // end
 
 

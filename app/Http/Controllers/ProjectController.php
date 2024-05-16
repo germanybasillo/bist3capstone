@@ -96,6 +96,19 @@ class ProjectController extends Controller
         // return redirect()->route('login')->with('error', 'You are not allowed to access');
     }
 
+    public function tenantdashboard()
+    {
+        // if (Auth::check()) {
+
+            return view('tenant.index',[
+                // 'balances' => balance::count(),
+                // 'payment_historys' => payment_history::count(),
+            ]);
+        // }
+
+        // return redirect()->route('login')->with('error', 'You are not allowed to access');
+    }
+
 
 
     public function logout()
