@@ -36,12 +36,24 @@
 							<span class="text-danger">{{ $errors->first('password') }}</span>
 						@endif
 					</div>
-					<div class="icon1">
+					{{-- <div class="icon1">
 						<span class="fa fa-lock"></span>
 						<input type="password" placeholder="Confirm Password" name="confirm_password" />
 						@if($errors->has('confirm_password'))
 							<span class="text-danger">{{ $errors->first('confirm_password') }}</span>
 						@endif
+					</div> --}}
+					<div class="form-group">
+						<label for="usertype"></label>
+						<select name="user_type" class="form-control rounded-left @error('usertype') is-invalid @enderror">
+							<option value="" selected disabled>Select User Type</option>
+							<option value="student" {{ old('user_type') == 'student' ? 'selected' : '' }}>Admin</option>
+							<option value="teacher" {{ old('user_type') == 'teacher' ? 'selected' : '' }}>Rental Owner</option>
+							<option value="admin" {{ old('user_type') == 'admin' ? 'selected' : '' }}>Tenants</option>
+						</select>
+						@error('user_type')
+							<span class="text-danger">{{ $message }}</span>
+						@enderror
 					</div>
 					<div class="bottom">
 						<button class="btn">Register</button>
