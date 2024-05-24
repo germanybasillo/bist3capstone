@@ -11,14 +11,14 @@ class RoomController extends Controller
 {
     public function getAll(): View
     {
-        return view('page.room', [
+        return view('admin.room.room', [
             'rooms' => Room::all()
         ]);
     }
 
     public function edit(string $id): View
     {
-        return view('page.editroom', [
+        return view('admin.room.editroom', [
             'room' => Room::findOrFail($id)
         ]);
     }
@@ -59,4 +59,10 @@ class RoomController extends Controller
       return redirect("/rooms")
         ->with('success', 'Room '.$id.'info deleted successfully');
     }
+
+    public function addroom(){
+
+        return view('admin.room.addroom');
+        
+      }
 }

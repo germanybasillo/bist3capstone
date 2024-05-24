@@ -35,24 +35,23 @@ Route::post('/registration',  [RegisterController::class, 'validate_registration
 
 Route::get('/logout',  [LogoutController::class, 'logout'])->name('logout');
 
-
+// =============CRUD=================================
 Route::get('/tenants',  [TenantController::class, 'getAll']);
 Route::get('/tenants/{id}',  TenantController::class .'@edit')->name('tenants.edit');
 Route::post('/tenant-store',[TenantController::class, 'store']);
 Route::put('/tenants/{id}',[TenantController::class, 'update'])->name('tenants.update');
 Route::delete('/tenants/{id}',TenantController::class .'@destroy')->name('tenants.destroy');
+// =============END=================================
+Route::get('/addtenant',  [TenantController::class, 'addtenant']);
 
-Route::get('addtenant', function () { return view('page.addtenant');}); 
-
+// =============CRUD=================================
 Route::get('/rooms',  [RoomController::class, 'getAll']);
 Route::get('/rooms/{id}',  RoomController::class .'@edit')->name('rooms.edit');
 Route::post('/rooms-store',  RoomController::class .'@store')->name('rooms.store');
 Route::put('/rooms/{id}',[RoomController::class, 'update'])->name('rooms.update');
 Route::delete('/rooms/{id}',RoomController::class .'@destroy')->name('rooms.destroy');
-
-Route::get('addroom', function () {
-    return view('page.addroom');
-});
+// =============END=================================
+Route::get('/addroom',  [RoomController::class, 'addroom']);
 
 
 Route::get('/beds',  [BedController::class, 'getAll']);

@@ -11,14 +11,14 @@ class TenantController extends Controller
 {
     public function getAll(): View
     {
-        return view('page.tenant', [
+        return view('admin.tenant.tenant', [
             'tenants' => Tenant::all()
         ]);
     }
 
     public function edit(string $id): View
     {
-        return view('page.edittenant', [
+        return view('admin.tenant.edittenant', [
             'tenant' => Tenant::findOrFail($id)
         ]);
     }
@@ -71,4 +71,11 @@ class TenantController extends Controller
     return redirect("/tenants")
       ->with('success', 'Tenant '.$id.'info deleted successfully');
   }
+
+  public function addtenant(){
+
+    return view('admin.tenant.addtenant');
+    
+  }
+  
 }

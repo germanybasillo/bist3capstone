@@ -12,7 +12,7 @@ class RegisterController extends Controller
     public function registration()
     {
         if (Auth::check()) {
-            return redirect()->route('landingpage');
+            return redirect()->route('/landingpage');
         }
         return view('account.registration');
     }
@@ -34,6 +34,6 @@ class RegisterController extends Controller
         ]);
 
         Auth::login($user); // Automatically log in the user after registrations
-        return redirect()->route('login')->with('success', 'Registration completed. Welcome to the dashboard!');
+        return redirect()->route('/login')->with('success', 'Registration completed. Welcome to the dashboard!');
     }
 }
