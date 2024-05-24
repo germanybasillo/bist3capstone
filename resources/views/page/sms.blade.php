@@ -1,6 +1,6 @@
 @extends('template.nav')
 
-@include('link.landing')
+@include('template.link.landing')
 
 @section('content')
  
