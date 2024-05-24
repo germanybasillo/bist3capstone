@@ -1,15 +1,14 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\User;
 
-use App\Models\Tenant;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Storage;
+use App\Http\Controllers\Controller;
 use Illuminate\View\View;
+use Illuminate\Http\Request;
+use App\Models\Tenant;
 
 class TenantController extends Controller
 {
-    
     public function getAll(): View
     {
         return view('page.tenant', [

@@ -5,7 +5,7 @@ use App\Http\Controllers\Page\PageController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\Auth\LogoutController;
-use App\Http\Controllers\TenantController;
+use App\Http\Controllers\User\TenantController;
 use App\Http\Controllers\Room\RoomController;
 use App\Http\Controllers\Bed\BedController;
 use App\Http\Controllers\Bed\BedAssignController;
