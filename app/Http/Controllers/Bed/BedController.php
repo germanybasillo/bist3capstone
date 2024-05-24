@@ -1,10 +1,11 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Bed;
 
-use App\Models\Bed;
+use App\Http\Controllers\Controller;
 use Illuminate\View\View;
 use Illuminate\Http\Request;
+use App\Models\Bed;
 
 class BedController extends Controller
 {

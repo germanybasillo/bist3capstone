@@ -1,9 +1,11 @@
 <?php
-namespace App\Http\Controllers;
 
+namespace App\Http\Controllers\Bed;
+
+use App\Http\Controllers\Controller;
+use Illuminate\Http\Request;
 use App\Models\bed_assign;
 use Illuminate\View\View;
-use Illuminate\Http\Request;
 
 class BedAssignController extends Controller
 {
@@ -63,6 +65,4 @@ class BedAssignController extends Controller
       return redirect("/bed_assigns")
         ->with('success', 'BedAssign '.$id.'info deleted successfully');
     }
-
 }
-

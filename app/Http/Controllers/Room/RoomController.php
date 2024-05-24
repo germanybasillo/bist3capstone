@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Room;
 
-use App\Models\Room;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Storage;
+use App\Http\Controllers\Controller;
 use Illuminate\View\View;
+use Illuminate\Http\Request;
+use App\Models\Room;
 
 class RoomController extends Controller
 {

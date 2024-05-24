@@ -1,13 +1,15 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
-use App\Http\Controllers\ProjectController;
+use App\Http\Controllers\Page\PageController;
+use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\Auth\RegisterController;
+use App\Http\Controllers\Auth\LogoutController;
 use App\Http\Controllers\TenantController;
-use App\Http\Controllers\RoomController;
-use App\Http\Controllers\BedController;
-use App\Http\Controllers\BedAssignController;
-use App\Http\Controllers\NoticeController;
+use App\Http\Controllers\Room\RoomController;
+use App\Http\Controllers\Bed\BedController;
+use App\Http\Controllers\Bed\BedAssignController;
+use App\Http\Controllers\Messages\NoticeController;
 
 
 
@@ -22,9 +24,16 @@ use App\Http\Controllers\NoticeController;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', function () { return view('welcome'); });
+
+Route::get('/login',  [LoginController::class, 'login'])->name('account.login');
+Route::post('/login',  [LoginController::class, 'validate_login'])->name('validate_login');
+
+Route::get('/registration',  [RegisterController::class, 'registration'])->name('account.registration');
+Route::post('/registration',  [RegisterController::class, 'validate_registration'])->name('validate_registration');
+
+Route::get('/logout',  [LogoutController::class, 'logout'])->name('logout');
+
 
 Route::get('/tenants',  [TenantController::class, 'getAll']);
 Route::get('/tenants/{id}',  TenantController::class .'@edit')->name('tenants.edit');
@@ -32,9 +41,7 @@ Route::post('/tenant-store',[TenantController::class, 'store']);
 Route::put('/tenants/{id}',[TenantController::class, 'update'])->name('tenants.update');
 Route::delete('/tenants/{id}',TenantController::class .'@destroy')->name('tenants.destroy');
 
-Route::get('addtenant', function () {
-    return view('page.addtenant');
-}); 
+Route::get('addtenant', function () { return view('page.addtenant');}); 
 
 Route::get('/rooms',  [RoomController::class, 'getAll']);
 Route::get('/rooms/{id}',  RoomController::class .'@edit')->name('rooms.edit');
@@ -145,19 +152,7 @@ Route::get('payment-history', function () {
 });
 
 // end
-
 // dashboard
-Route::get('landingpage',  [ProjectController::class, 'admindashboard']);
-Route::get('index',  [ProjectController::class, 'tenantdashboard']);
+Route::get('landingpage',  [PageController::class, 'admindashboard']);
+Route::get('index',  [PageController::class, 'tenantdashboard']);
 // end
-
-
-Route::controller(ProjectController::class)->group(function () {
-    Route::get('login', 'login')->name('login');
-    Route::get('registration', 'registration')->name('registration');
-    Route::get('logout', 'logout')->name('logout');
-    Route::post('validate_registration', 'validate_registration')->name('validate_registration');
-    Route::post('validate_login', 'validate_login')->name('validate_login');
-    Route::get('dashboard', 'dashboard')->name('dashboard');
-    Route::get('home', 'home')->name('home');
-});
