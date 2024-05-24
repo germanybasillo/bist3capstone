@@ -24,18 +24,17 @@ use App\Http\Controllers\Messages\NoticeController;
 |
 */
 
-
 Route::get('/', function () { return view('welcome'); });
 
+// =============AUTHENTICATION=================================
 Route::get('/login', 'App\Http\Controllers\Auth\LoginController@login')->name('login');
-Route::post('/login',  [LoginController::class, 'validate_login'])->name('validate_login');
-
 Route::get('/registration', 'App\Http\Controllers\Auth\RegisterController@registration')->name('registration');
+Route::post('/login',  [LoginController::class, 'validate_login'])->name('validate_login');
 Route::post('/registration',  [RegisterController::class, 'validate_registration'])->name('validate_registration');
-
 Route::get('/logout',  [LogoutController::class, 'logout'])->name('logout');
+// =============END=================================
 
-// =============CRUD=================================
+// =============CRUD TENANT=================================
 Route::get('/tenants',  [TenantController::class, 'getAll']);
 Route::get('/tenants/{id}',  TenantController::class .'@edit')->name('tenants.edit');
 Route::post('/tenant-store',[TenantController::class, 'store']);
@@ -44,7 +43,7 @@ Route::delete('/tenants/{id}',TenantController::class .'@destroy')->name('tenant
 // =============END=================================
 Route::get('/addtenant',  [TenantController::class, 'addtenant']);
 
-// =============CRUD=================================
+// =============CRUD ROOM=================================
 Route::get('/rooms',  [RoomController::class, 'getAll']);
 Route::get('/rooms/{id}',  RoomController::class .'@edit')->name('rooms.edit');
 Route::post('/rooms-store',  RoomController::class .'@store')->name('rooms.store');
@@ -53,26 +52,23 @@ Route::delete('/rooms/{id}',RoomController::class .'@destroy')->name('rooms.dest
 // =============END=================================
 Route::get('/addroom',  [RoomController::class, 'addroom']);
 
-
+// =============CRUD BED=================================
 Route::get('/beds',  [BedController::class, 'getAll']);
 Route::get('/beds/{id}',  BedController::class .'@edit')->name('beds.edit');
 Route::post('/beds-store',BedController::class. '@store')->name('beds.store');
 Route::put('/beds/{id}',[BedController::class, 'update'])->name('beds.update');
 Route::delete('/beds/{id}',BedController::class .'@destroy')->name('beds.destroy');
+// =============END=================================
+Route::get('/addbed',  [BedController::class, 'addbed']);
 
-Route::get('addbed-management', function () {
-    return view('page.addbed-management');
-});
-
+// =============CRUD BED-ASSIGN=================================
 Route::get('/bed_assigns',  [BedAssignController::class, 'getAll']);
 Route::get('/bed_assigns/{id}',  BedAssignController::class .'@edit')->name('bed_assigns.edit');
 Route::post('/bed_assigns-store',[BedAssignController::class. '@store'])->name('bed_assigns.store');
 Route::put('/bed_assigns/{id}',[BedAssignController::class, 'update'])->name('bed_assigns.update');
 Route::delete('/bed_assigns/{id}',BedAssignController::class .'@destroy')->name('bed_assigns.destroy');
-
-Route::get('addbed-assign', function () {
-    return view('page.addbed-assign');
-});
+// =============END=================================
+Route::get('/addbedassign',  [BedAssignController::class, 'addbedassign']);
 
 
 Route::get('bill', function () {

@@ -10,14 +10,14 @@ class BedController extends Controller
 {
     public function getAll(): View
     {
-        return view('page.bed', [
+        return view('admin.bed.bed', [
             'beds' => Bed::all()
         ]);
     }
 
     public function edit(string $id): View
     {
-        return view('page.editbed', [
+        return view('admin.bed.editbed', [
             'bed' => Bed::findOrFail($id)
         ]);
     }
@@ -63,4 +63,10 @@ class BedController extends Controller
       return redirect("/beds")
         ->with('success', 'Bed '.$id.'info deleted successfully');
     }
+
+    public function addbed(){
+
+        return view('admin.bed.addbed-management');
+        
+      }
 }

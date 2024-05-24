@@ -11,14 +11,14 @@ class BedAssignController extends Controller
 {
     public function getAll(): View
     {
-        return view('page.bedassign', [
+        return view('admin.bed.bedassign', [
             'bed_assigns' => bed_assign::all()
         ]);
     }
 
     public function edit(string $id): View
     {
-        return view('page.editbedassign', [
+        return view('admin.bed.editbedassign', [
             'bed_assign' => bed_assign::findOrFail($id)
         ]);
     }
@@ -65,4 +65,10 @@ class BedAssignController extends Controller
       return redirect("/bed_assigns")
         ->with('success', 'BedAssign '.$id.'info deleted successfully');
     }
+
+    public function addbedassign(){
+
+        return view('admin.bed.addbed-assign');
+        
+      }
 }
