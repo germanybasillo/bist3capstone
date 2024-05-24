@@ -25,11 +25,12 @@ use App\Http\Controllers\Messages\NoticeController;
 */
 
 
-// Route::get('/', function () { return view('welcome'); });
+Route::get('/', function () { return view('welcome'); });
+
 Route::get('/login', 'App\Http\Controllers\Auth\LoginController@login')->name('login');
 Route::post('/login',  [LoginController::class, 'validate_login'])->name('validate_login');
 
-Route::get('/registration',  [RegisterController::class, 'registration'])->name('account.registration');
+Route::get('/registration', 'App\Http\Controllers\Auth\RegisterController@registration')->name('registration');
 Route::post('/registration',  [RegisterController::class, 'validate_registration'])->name('validate_registration');
 
 Route::get('/logout',  [LogoutController::class, 'logout'])->name('logout');
