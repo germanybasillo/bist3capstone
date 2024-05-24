@@ -10,15 +10,6 @@ use App\Models\Tenant;
 
 class PageController extends Controller
 {
-    public function dashboard()
-    {
-        if (Auth::check()) {
-            return view('dashboard');
-        }
-
-        return redirect()->route('login')->with('error', 'You are not allowed to access');
-    }
-
     public function home()
     {
         if (Auth::check()) {

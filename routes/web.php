@@ -24,7 +24,8 @@ use App\Http\Controllers\Messages\NoticeController;
 |
 */
 
-Route::get('/', function () { return view('welcome'); });
+
+// Route::get('/', function () { return view('welcome'); });
 
 Route::get('/login',  [LoginController::class, 'login'])->name('account.login');
 Route::post('/login',  [LoginController::class, 'validate_login'])->name('validate_login');

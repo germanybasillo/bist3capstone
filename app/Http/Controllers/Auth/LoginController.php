@@ -10,7 +10,7 @@ class LoginController extends Controller
     public function login()
     {
         if (Auth::check()) {
-            return redirect()->route('dashboard');
+            return redirect()->route('page/landingpage');
         }
         return view('account.login');
     }
@@ -26,7 +26,7 @@ class LoginController extends Controller
         $credentials = $request->only('email', 'password');
 
         if (Auth::attempt($credentials)) {
-            return redirect()->route('dashboard');
+            return redirect()->route('page/landingpage');
         }
 
         return redirect()->route('login')->with('error', 'Login details are not valid');
