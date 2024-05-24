@@ -26,8 +26,7 @@ use App\Http\Controllers\Messages\NoticeController;
 
 
 // Route::get('/', function () { return view('welcome'); });
-
-Route::get('/login',  [LoginController::class, 'login'])->name('account.login');
+Route::get('/login', 'App\Http\Controllers\Auth\LoginController@login')->name('login');
 Route::post('/login',  [LoginController::class, 'validate_login'])->name('validate_login');
 
 Route::get('/registration',  [RegisterController::class, 'registration'])->name('account.registration');
@@ -154,6 +153,6 @@ Route::get('payment-history', function () {
 
 // end
 // dashboard
-Route::get('landingpage',  [PageController::class, 'admindashboard']);
+Route::get('/landingpage', 'App\Http\Controllers\Page\PageController@admindashboard')->name('landingpage');
 Route::get('index',  [PageController::class, 'tenantdashboard']);
 // end

@@ -6,12 +6,13 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\User;
+
 class RegisterController extends Controller
 {
     public function registration()
     {
         if (Auth::check()) {
-            return redirect()->route('page/landingpage');
+            return redirect()->route('landingpage');
         }
         return view('account.registration');
     }

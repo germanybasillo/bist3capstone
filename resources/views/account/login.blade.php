@@ -1,6 +1,6 @@
 @extends('template.account')
 
-@include('link.account')
+@include('template.link.account')
 
 @if($message = Session::get('success'))
 
@@ -64,4 +64,4 @@
 </div>	
 <!-- //main -->
 
-@endsection('content')
+@endsection

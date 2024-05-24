@@ -1,6 +1,6 @@
 @extends('template.account')
 
-@include('link.account')
+@include('template.link.account')
 
 @section('content')
 
